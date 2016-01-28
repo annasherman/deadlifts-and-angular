@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fitness</title>
+
+      <!-- JQUERY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    <!-- CDNJS :: Sortable (https://cdnjs.com/) -->
+  <!--
+  <script src="//cdnjs.cloudflare.com/ajax/libs/Sortable/1.4.2/Sortable.min.js"></script>
+-->
+    <!-- angular -->
+    <script type="text/javascript" src="/javascripts/angular.min.js"></script>
+    <script type="text/javascript" src="/javascripts/angular-app.js"></script>
+
+      <!-- Sortable.js -->
+    <script src="http://rubaxa.github.io/Sortable/Sortable.js"></script>
+
+    <!-- ng-sortable.js -->
+    <script src="http://rubaxa.github.io/Sortable/ng-sortable.js"></script>
+
+    <!-- app.js -->
+    <script type="text/javascript" src="/javascripts/app.js"></script>
+
+<!-- Materialize -->
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+
+   <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
+
+    <!-- my CSS -->
+      <link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
+
+
+</head>
+
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">FitBuilder</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<body>
+    {{#if currentUser}}
+    Welcome {{currentUser.username}}
+    <a href="/accounts/leave">Logout</a>
+    {{/if}}
+
+    {{{body}}}
+</body>
+</html>

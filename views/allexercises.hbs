@@ -1,0 +1,25 @@
+
+
+
+<section class="container" ng-app="liftsApp">
+
+
+      <article class="row" ng-controller="LiftListCtrl">
+        <div class="col-md-12">
+
+          <ul ng-sortable="{animation:150}">
+            <li ng-repeat="lift in lifts">
+              <strong>//lift.Name//</strong>
+              <em>//lift.Description//</em>
+              <form ng-submit="addTo(lift.Name, lift.Description)">
+                <input type="submit" value="Add Lift" class="btn btn-primary">
+              </form>
+
+              <!-- <button data-lift="//lift._id//" ng-click="addTo(lift)" className="addToButton">Add to Workout</button> -->
+            </li>
+          </ul>
+
+        </div>
+      </div>
+
+    </section>

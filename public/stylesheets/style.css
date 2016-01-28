@@ -1,0 +1,105 @@
+@import url(https://fonts.googleapis.com/css?family=Patua+One);
+
+body {
+  padding: 50px;
+  font-family: 'Patua One', cursive;
+  font-size: 16px;
+  background-color: #B9EEC9;
+}
+
+a {
+  color: #00B7FF;
+}
+
+::-webkit-input-placeholder {
+  color: #1D2620;
+}
+
+.lifts {
+  border: 1px dotted black;
+  border-radius: 5px;
+  margin-bottom: 1%;
+  padding: 1%;
+  padding-top: 2%;
+  height: 23rem;
+}
+
+.lifts a:hover{
+  background-color: #CACACA;
+}
+
+.workoutModule{
+  border: 3px solid white;
+  margin-bottom: 2%;
+  /*padding: 7%;*/
+  height: 15rem;
+  border-radius: 6px;
+  display: block;
+}
+
+.workoutModule:hover{
+  /*background-color: #4AC1CD;*/
+}
+
+
+.input-field{
+  display: inline;
+}
+
+.liftName{
+
+}
+
+.userName{
+
+}
+
+.liftDesc{
+
+}
+
+.addToButton{
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.addToButton:hover{
+  font-weight: bold;
+  background-color: green;
+}
+
+.addToButton:visited{
+  color: red;
+}
+
+.addToButton:active{
+  color: #7B7B7B;
+}
+
+
+
+.lifts a:active{
+  background-color: red;
+}
+
+.lifts a:visited{
+  background-color: red;
+}
+
+
+
+li{
+  list-style: none;
+  font-family: 'Patua One', cursive;
+  font-size: 15px;
+  color: white;
+}
+
+
+p {
+  font-family: 'Patua One', cursive;
+  font-size: 16px;
+  display: inline;
+}
+

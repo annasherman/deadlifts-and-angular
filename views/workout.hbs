@@ -1,0 +1,34 @@
+
+<a href="/exercises">Add more Lifts</a>
+
+<section class="container" ng-app="workoutApp">
+
+
+      <article class="row" ng-controller="workoutCtrl" >
+        <div class="workOutCards" >
+          <ul ng-sortable="{animation:150}" id="workoutList">
+            <li ng-repeat="lift in workout" class="workoutModule col l5" id="//lift._id//">
+            <button ng-click="removeLift(lift)" data-lift="//lift._id//">X</button>
+              <strong>//lift.Name//</strong>
+              <em>//lift.Description//</em>
+              <div class="form-style-4">
+              <div class="input-field col s6">
+              <label for = "Sets">
+              <input ng-keyup="$event.keyCode == 13 && addSets(sets,lift)" data-lift="//lift._id//" placeholder="//lift.sets//" type="text" name="sets" ng-model="sets">
+              </div>
+              </label>
+
+              <div class="input-field col s6">
+              <input ng-keyup="$event.keyCode == 13 && addReps(reps,lift)" data-lift="//lift._id//" placeholder="//lift.reps//" type="text" name="reps" ng-model="reps">
+              </div>
+
+              <div class="input-field col s6">
+              <input ng-keyup="$event.keyCode == 13 && addWeight(weight,lift)" data-lift="//lift._id//" placeholder="//lift.weight//" type="text" name="weight" ng-model="weight">
+              </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+    </section>
