@@ -20,7 +20,8 @@ liftsApp.controller('LiftListCtrl', function($scope, $http){
       url: '/workoutapi',
       data: {
         Name: name,
-        Description: description
+        Description: description,
+        Position: 999
       }
     })
     .then(function successCallback(response) {

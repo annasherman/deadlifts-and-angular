@@ -7,12 +7,20 @@ body {
   background-color: #B9EEC9;
 }
 
+nav .nav-wrapper{
+  padding: 0px;
+}
+
 a {
   color: #00B7FF;
 }
 
 ::-webkit-input-placeholder {
   color: #1D2620;
+}
+
+.editable{
+  margin-bottom: 0px;
 }
 
 .lifts {
@@ -28,7 +36,7 @@ a {
   background-color: #CACACA;
 }
 
-.workoutModule{
+.workout-module{
   border: 3px solid white;
   margin-bottom: 2%;
   /*padding: 7%;*/
@@ -37,25 +45,26 @@ a {
   display: block;
 }
 
-.workoutModule:hover{
+.workout-module:hover{
   /*background-color: #4AC1CD;*/
+}
+
+.workout-module input {
+  width: 100%;
 }
 
 
 .input-field{
-  display: inline;
+  display: block;
+  width: 100%;
+  margin-bottom: 0px;
+}
+input[type=text].editable {
+  margin-bottom: 0;
 }
 
-.liftName{
-
-}
-
-.userName{
-
-}
-
-.liftDesc{
-
+input{
+  width: 100%;
 }
 
 .addToButton{
@@ -73,33 +82,22 @@ a {
   color: red;
 }
 
-.addToButton:active{
-  color: #7B7B7B;
+.input-field .prefix {
+  font-size: 1.3rem;
 }
-
-
-
-.lifts a:active{
-  background-color: red;
-}
-
-.lifts a:visited{
-  background-color: red;
-}
-
-
 
 li{
   list-style: none;
   font-family: 'Patua One', cursive;
   font-size: 15px;
   color: white;
+  display: block;
 }
 
 
 p {
   font-family: 'Patua One', cursive;
-  font-size: 16px;
-  display: inline;
+  font-size: 15px;
+  display: block;
 }
 

@@ -8,6 +8,7 @@ var WorkoutComponentSchema = new mongoose.Schema({
   sets: Number,
   reps: Number,
   weight: String,
+  Position: Number,
   User: Object,
   WorkoutName: String,
   WorkoutID: Number
