@@ -14,7 +14,7 @@ liftsApp.controller('LiftListCtrl', function($scope, $http){
     });
   };
 
-  $scope.addTo = function(name, description){
+  $scope.addTo = function(name, description,event){
     $http({
       method: 'POST',
       url: '/workoutapi',
@@ -24,6 +24,7 @@ liftsApp.controller('LiftListCtrl', function($scope, $http){
       }
     })
     .then(function successCallback(response) {
+      event.preventDefault();
       console.log(response);
     }, function errorCallback(response) {
       console.log(response);
@@ -81,6 +82,7 @@ workoutApp.controller('workoutCtrl', function($scope, $http){
       console.log('We got it');
       $scope.workout = data;
       console.log($scope.workout);
+
     });
   };
 

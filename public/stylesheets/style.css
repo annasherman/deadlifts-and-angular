@@ -4,6 +4,7 @@ body {
   font-family: 'Patua One', cursive;
   font-size: 16px;
   background-color: #B9EEC9;
+
 }
 
 #bodyContainer {
@@ -16,6 +17,7 @@ nav .nav-wrapper{
 
 a {
   color: #00B7FF;
+  text-align: center;
 }
 
 ::-webkit-input-placeholder {
@@ -40,12 +42,7 @@ a {
 }
 
 .workout-module{
-  border: 3px solid white;
   margin-bottom: 2%;
-  /*padding: 7%;*/
-  height: 17rem;
-  border-radius: 6px;
-  display: block;
 }
 
 .workout-module:hover{
@@ -104,3 +101,10 @@ p {
   display: block;
 }
 
+input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea {
+  height: 2rem;
+}
+
+.card .card-content {
+  padding: 10px;
+}

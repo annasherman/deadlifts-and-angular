@@ -41,27 +41,37 @@
 <body>
   <nav>
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">Logo</a>
+      <a href="#!" class="brand-logo">FitBuilder</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
+        <li>
+        {{#if currentUser}}
+        Welcome {{currentUser.username}}
+        {{/if}}
+        </li>
         <li><a href="/exercises">Lifts</a></li>
+        {{#if currentUser}}
         <li><a href="/workout">Your Workout</a></li>
         <li><a href="/accounts/leave">Logout</a></li>
+        {{/if}}
+        {{#unless currentUser}}
+        <li><a href="/accounts/login">Login</a></li>
+        {{/unless}}
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <li><a href="/exercises">Lifts</a></li>
+        {{#if currentUser}}
         <li><a href="/workout">Your Workout</a></li>
         <li><a href="/accounts/leave">Logout</a></li>
+        {{/if}}
       </ul>
     </div>
   </nav>
 
 
-    {{#if currentUser}}
-    Welcome {{currentUser.username}}
-    <a href="/accounts/leave">Logout</a>
-    {{/if}}
+
     <div id="bodyContainer">
+
       {{{body}}}
     </div>
 
