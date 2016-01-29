@@ -15,6 +15,10 @@ nav .nav-wrapper{
   padding: 0px;
 }
 
+nav .brand-logo {
+  margin-left: 50px;
+}
+
 a {
   color: #00B7FF;
   text-align: center;
