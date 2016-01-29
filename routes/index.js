@@ -41,7 +41,7 @@ router.get('/workout', function(req, res, next) {
     } else if (req.user && exercises.length > 0) {
       console.log(exercises.length);
       console.log(req.user);
-      // var userWorkouts = [];
+      var userWorkouts = [];
       //   for (var lift in exercises) {
       //     if (exercises[lift].User == req.user) {
       //       userWorkouts.push(exercises[lift]);
