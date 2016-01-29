@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var connectionString = 'mongodb://localhost/workouts';
+var connectionString = process.env.MONGOLAB_URI || process.env.DATABASE_URL;
 
 mongoose.connect(connectionString);
 
