@@ -40,7 +40,8 @@ router.get('/workout', function(req, res, next) {
       res.render('workout', {data: liftsChosen, currentUser: req.user, message: "You don't have any lifts yet! Check out our database and add them here."});
     } else if (req.user && exercises.length > 0) {
       console.log(exercises.length);
-      res.render('workout', {data: liftsChosen, currentUser: req.user.username, currentUserId: req.user._id});
+      console.log(req.user);
+      res.render('workout', {data: liftsChosen, currentUser: req.user, currentUserId: req.user._id});
     } else {
       res.redirect('/');
     }

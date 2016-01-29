@@ -20,6 +20,10 @@ a {
   text-align: center;
 }
 
+.login{
+  width: 50%;
+}
+
 ::-webkit-input-placeholder {
   color: #1D2620;
 }
