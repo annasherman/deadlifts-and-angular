@@ -38,7 +38,7 @@
 
 
 </head>
-
+<body>
   <nav>
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo">Logo</a>
@@ -56,12 +56,14 @@
     </div>
   </nav>
 
-<body>
+
     {{#if currentUser}}
     Welcome {{currentUser.username}}
     <a href="/accounts/leave">Logout</a>
     {{/if}}
+    <div id="bodyContainer">
+      {{{body}}}
+    </div>
 
-    {{{body}}}
 </body>
 </html>

@@ -1,10 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Patua+One);
 
 body {
-  padding: 50px;
   font-family: 'Patua One', cursive;
   font-size: 16px;
   background-color: #B9EEC9;
+}
+
+#bodyContainer {
+  padding: 50px;
 }
 
 nav .nav-wrapper{
@@ -90,7 +93,7 @@ li{
   list-style: none;
   font-family: 'Patua One', cursive;
   font-size: 15px;
-  color: white;
+  color: black;
   display: block;
 }
 
