@@ -21,6 +21,7 @@
               </div>
 
               <form ng-submit="addTo(lift.Name, lift.Description)">
+                <input type="hidden" value="{{currentUser}}" id="userInput">
                 <input type="submit" value="Add Lift" class="btn btn-primary">
               </form>
 

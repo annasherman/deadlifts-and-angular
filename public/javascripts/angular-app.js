@@ -14,13 +14,17 @@ liftsApp.controller('LiftListCtrl', function($scope, $http){
     });
   };
 
-  $scope.addTo = function(name, description,event){
+  $scope.addTo = function(name, description, event){
+    var user = $('#userInput').val();
+    console.log('------user------')
+    console.log(user);
     $http({
       method: 'POST',
       url: '/workoutapi',
       data: {
         Name: name,
-        Description: description
+        Description: description,
+        User: user
       }
     })
     .then(function successCallback(response) {
@@ -45,14 +49,15 @@ var workoutApp = angular.module('workoutApp', ['ng-sortable']).config(function($
 
 workoutApp.controller('workoutCtrl', function($scope, $http){
 
-  $scope.removeLift = function(lift){
+  $scope.removeLift = function(lift,event){
     console.log(lift);
-      $http.delete('/workoutapi/' + lift["_id"]).success(function(){
+      $http.delete('/workoutapi/' + lift["_id"]).success(function(event){
         $scope.fetch();
+
       });
   }
 
-  $scope.addSets = function(sets,lift, event){
+  $scope.addSets = function(sets,lift,event){
     $http.patch('/workoutapi/'+ lift["_id"],{sets: sets})
     .success(function(data, status){
       event.preventDefault();
