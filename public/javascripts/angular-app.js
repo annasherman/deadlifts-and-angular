@@ -35,6 +35,7 @@ liftsApp.controller('LiftListCtrl', function($scope, $http){
     });
   }
 
+
   $scope.fetch();
 
 
@@ -48,6 +49,20 @@ var workoutApp = angular.module('workoutApp', ['ng-sortable']).config(function($
 
 
 workoutApp.controller('workoutCtrl', function($scope, $http){
+
+  $scope.workoutConfig = {
+    onSort: function(evt){
+      console.log(evt.oldIndex);
+      console.log(evt.newIndex);
+      console.log(evt.model);
+      $http.patch('/workoutapi/'+ evt.model["_id"],{Position: evt.newIndex})
+      .then(function(data, status){
+        console.log('updated   ' + evt.model.Name + 's position to ' + evt.newIndex);
+       // $scope.fetch();
+      })
+    }
+  }
+
 
   $scope.removeLift = function(lift,event){
     console.log(lift);
