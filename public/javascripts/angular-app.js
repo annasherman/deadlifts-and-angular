@@ -50,16 +50,24 @@ var workoutApp = angular.module('workoutApp', ['ng-sortable']).config(function($
 
 workoutApp.controller('workoutCtrl', function($scope, $http){
 
+
+
   $scope.workoutConfig = {
-    onSort: function(evt){
-      console.log(evt.oldIndex);
-      console.log(evt.newIndex);
-      console.log(evt.model);
-      $http.patch('/workoutapi/'+ evt.model["_id"],{Position: evt.newIndex})
-      .then(function(data, status){
-        console.log('updated   ' + evt.model.Name + 's position to ' + evt.newIndex);
-       // $scope.fetch();
-      })
+    onEnd: function(evt){
+    console.log('onend == ' + evt.oldIndex);
+    console.log(evt.models);
+    if (evt.newIndex) {
+    console.log('your index changed!!!');
+    for (var model in evt.models) {
+      console.log(evt.models[model].Position);
+     // if (evt.models[model].Position != )
+    }
+    // $http.patch('/workoutapi/'+ evt.model["_id"],{Position: evt.newIndex})
+    //   .then(function(data, status){
+    //   console.log('updated   ' + evt.model.Name + 's position to ' + evt.newIndex);
+      // $scope.fetch();
+    //});
+    }
     }
   }
 

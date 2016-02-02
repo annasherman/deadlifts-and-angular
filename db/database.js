@@ -1,6 +1,13 @@
 var mongoose = require('mongoose');
 
+
 var connectionString = 'mongodb://localhost/workouts';
+if (process.env.NODE_ENV === 'production') {
+    connectionString = process.env.MONGOLAB_URI;
+}
+
+
+// var connectionString = 'mongodb://localhost/workouts';
 
 //process.env.DATABASE_URL || process.env.MONGOLAB_URI;
 
