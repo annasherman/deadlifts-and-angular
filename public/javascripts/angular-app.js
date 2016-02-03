@@ -50,12 +50,20 @@ var workoutApp = angular.module('workoutApp', ['ng-sortable']).config(function($
 
 workoutApp.controller('workoutCtrl', function($scope, $http){
 
-
+  // $scope.changed = function(element) {
+  //   var index = angular.element(element).$scope().$index;
+  //   console.log('-------shithappenedyo')
+  //   console.log(index);
+  // }
 
   $scope.workoutConfig = {
     onEnd: function(evt){
+      console.log();
       console.log('old index onend == ' + evt.oldIndex);
-      console.log(evt.models);
+      console.log(evt);
+      for (var model in evt.models){
+        console.log(evt.models[model].Name);
+      }
       if (evt.newIndex) {
       console.log('your index changed!!!');
       $http.patch('/workoutapi/'+ evt.model["_id"],{Position: evt.newIndex})
@@ -63,6 +71,8 @@ workoutApp.controller('workoutCtrl', function($scope, $http){
         console.log('updated   ' + evt.model.Name + 's position to ' + evt.newIndex);
         //$scope.fetch();
         });
+      } else {
+        console.log('yo index did not change.');
       }
     }
   }
