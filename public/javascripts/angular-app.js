@@ -60,11 +60,11 @@ workoutApp.controller('workoutCtrl', function($scope, $http){
     onEnd: function(evt){
       console.log();
       console.log('old index onend == ' + evt.oldIndex);
-      console.log(evt);
-      for (var model in evt.models){
-        console.log(evt.models[model].Name);
-      }
-      if (evt.newIndex) {
+      console.log('new index onend== ' + evt.newIndex);
+      // for (var model in evt.models){
+      //   console.log(evt.models[model].Name);
+      // }
+      if (evt.newIndex && evt.newIndex != evt.oldIndex) {
       console.log('your index changed!!!');
       $http.patch('/workoutapi/'+ evt.model["_id"],{Position: evt.newIndex})
         .then(function(data, status){
