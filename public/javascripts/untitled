@@ -1,0 +1,40 @@
+$scope.workoutConfig = {
+    onEnd: function(evt) {
+      console.log(evt);
+      var oldIndex = evt.oldIndex + 1;
+      var newIndex = evt.newIndex + 1;
+      console.log('old index onend == ' + oldIndex);
+      console.log('new index onend == ' + newIndex);
+      if (newIndex && newIndex != oldIndex) {
+      console.log('your index changed!!!');
+      for (var model in evt.models){
+        console.log(evt.models[model].Name);
+        var liftPosition = evt.models[model].Position;
+        var modelId = evt.models[model]._id;
+        var direction = newIndex - oldIndex;
+        if (direction > 0) {
+          console.log('your index increased, you moved your lift down');
+        } else {
+          console.log('your index decreased, you moved your lift up');
+        }
+        }
+        // loop through each.. then patch each after changing
+
+        // $http.patch('/workoutapi/'+ evt.model["_id"],{Position: newIndex})
+        // .then(function(data, status){
+        // console.log('updated  ' + evt.model.Name + ' position to ' + newIndex);
+        // $scope.fetch();
+        //});
+      } else {
+        console.log('yo index did not change.');
+      }
+    }
+  }
+
+  function patchRequest(id, newPosition, event) {
+    $http.patch('/workoutapi/'+ id,{Position: newPosition})
+    .then(function(data, status){
+    console.log('updated ' + event.model.Name+' position to ' + newPosition);
+    });
+  };
+
