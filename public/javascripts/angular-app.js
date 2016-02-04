@@ -50,113 +50,90 @@ var workoutApp = angular.module('workoutApp', ['ng-sortable']).config(function($
 
 workoutApp.controller('workoutCtrl', function($scope, $http){
 
-  // $scope.changed = function(element) {
-  //   var index = angular.element(element).$scope().$index;
-  //   console.log('-------shithappenedyo')
-  //   console.log(index);
-  // }
 
-$scope.workoutConfig = {
-    onEnd: function(evt) {
-      console.log(evt);
-      var oldIndex = evt.oldIndex + 1;
-      var newIndex = evt.newIndex + 1;
-      //console.log('old index onend == ' + oldIndex);
-      //console.log('new index onend == ' + newIndex);
-      if (newIndex && newIndex != oldIndex) {
-      console.log('your index changed!!!');
-      console.log(evt.model._id);
-      console.log(evt.model.Name);
-      patchRequest(evt.model._id,newIndex,evt.model.Name);
-      var direction = newIndex - oldIndex;
-        if (direction > 0) {
-          console.log('your index increased, you moved your lift down');
-          for (var model in evt.models) {
-            if (evt.models[model].Position <= newIndex && evt.models[model].Position > oldIndex && evt.models[model]._id != evt.model._id) {
-              var newPosition = parseInt(evt.models[model].Position) - 1;
-              console.log('-------');
-              console.log(evt.models[model].Name);
-              console.log(newPosition);
-              patchRequest(evt.models[model]._id,newPosition,evt.models[model].Name);
-              $scope.fetch();
-            }
-          }
-        } else {
-          console.log('your index decreased, you moved your lift up');
-          for (var model in evt.models) {
-            if (evt.models[model].Position >= newIndex && evt.models[model].Position < oldIndex && evt.models[model]._id != evt.model._id) {
-              var newPosition = parseInt(evt.models[model].Position) + 1;
-              console.log('-------')
-              console.log(evt.models[model].Name);
-              console.log(newPosition);
-              patchRequest(evt.models[model]._id,newPosition,evt.models[model].Name);
-              $scope.fetch();
-            }
-          }
+  $scope.modelCache = [];
+  $scope.updatePosition = function(models) {
+    for (var model in models) {
+      models[model].Position = model;
+      //console.log(models[model].Name);
+      //console.log(models[model].Position);
+      patchRequest(models[model]._id,model,models[model].Name);
+    }
 
+  }
+    $scope.workoutConfig = {
+
+      onEnd: function(evt) {
+        if (evt.model == undefined) {
+          console.log('someone did not move one');
+        } else if (evt.model != undefined && evt.newIndex != undefined) {
+          console.log('something got moved!');
+          $scope.modelCache = (evt.models);
+          console.log($scope.modelCache);
+          $scope.updatePosition($scope.modelCache);
         }
-      } else {
-        console.log('yo index did not change.');
       }
-    }
-  }
+    };
 
-  function patchRequest(id, newPosition, name) {
-    $http.patch('/workoutapi/'+ id,{Position: newPosition})
-    .then(function(data, status){
-    console.log('updated ' + name +' position to ' + newPosition);
-    });
-  };
-
-
-
-  $scope.removeLift = function(lift,event){
-    console.log(lift);
-      $http.delete('/workoutapi/' + lift["_id"]).success(function(event){
-        $scope.fetch();
-
+    function patchRequest(id, newPosition, name) {
+      $http.patch('/workoutapi/'+ id,{Position: newPosition})
+        .then(function(data, status){
+        console.log('updated ' + name +' position to ' + newPosition);
       });
-  }
+    };
 
-  $scope.addSets = function(sets,lift,event){
-    $http.patch('/workoutapi/'+ lift["_id"],{sets: sets})
-    .success(function(data, status){
-      event.preventDefault();
-      $scope.fetch(); //grab the list back down!!
-    });
-  }
 
-    $scope.addReps = function(reps,lift,event){
-      $http.patch('/workoutapi/'+ lift["_id"],{reps: reps})
-        .success(function(data, status){
-        event.preventDefault();
-        $scope.fetch(); //grab the list back down!!
-       });
+
+    $scope.removeLift = function(lift,event){
+      console.log(lift);
+        $http.delete('/workoutapi/' + lift["_id"]).success(function(event){
+          $scope.fetch();
+
+        });
     }
 
-    $scope.addWeight = function(weight,lift,event){
-      $http.patch('/workoutapi/'+ lift["_id"],{weight: weight})
-        .success(function(data, status){
+    $scope.addSets = function(sets,lift,event){
+      $http.patch('/workoutapi/'+ lift["_id"],{sets: sets})
+      .success(function(data, status){
         event.preventDefault();
         $scope.fetch(); //grab the list back down!!
       });
     }
 
+      $scope.addReps = function(reps,lift,event){
+        $http.patch('/workoutapi/'+ lift["_id"],{reps: reps})
+          .success(function(data, status){
+          event.preventDefault();
+          $scope.fetch(); //grab the list back down!!
+         });
+      }
 
-  $scope.fetch = function(){
-    $http.get('/workoutapi').success(function(data) {
-      //console.log('We got it');
-      $scope.workout = data;
-      //console.log($scope.workout);
-
-    });
-  };
-
+      $scope.addWeight = function(weight,lift,event){
+        $http.patch('/workoutapi/'+ lift["_id"],{weight: weight})
+          .success(function(data, status){
+          event.preventDefault();
+          $scope.fetch(); //grab the list back down!!
+        });
+      }
 
 
-  $scope.fetch();
+    $scope.fetch = function(){
+      $http.get('/workoutapi').success(function(data) {
+        //console.log('We got it');
+        $scope.workout = data;
+        $scope.modelCache = data;
+        console.log($scope.modelCache);
+        //console.log($scope.workout);
+
+      });
+    };
+
+
+
+    $scope.fetch();
 
 
 
 
-});
+
+  });

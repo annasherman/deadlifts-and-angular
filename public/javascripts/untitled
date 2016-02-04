@@ -38,3 +38,64 @@ $scope.workoutConfig = {
     });
   };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    $scope.workoutConfig = {
+    onEnd: function(evt) {
+      console.log(evt);
+      var oldIndex = evt.oldIndex + 1;
+      var newIndex = evt.newIndex + 1;
+      console.log('old index onend == ' + oldIndex);
+      console.log('new index onend== ' + newIndex);
+      // for (var model in evt.models){
+      //   console.log(evt.models[model].Name);
+      // }
+      if (newIndex && newIndex != oldIndex) {
+      console.log('your index changed!!!');
+
+      for (var model in evt.models){
+        console.log(evt.models[model].Name);
+        var liftPosition = evt.models[model].Position;
+        var modelId = evt.models[model]._id;
+
+        // if (evt.models[model].Position > newIndex && evt.models[model]._id != evt.model["_id"]){
+        //   var newPosition = evt.models[model].Position + 1;
+        //   patchRequest(evt.models[model].id, newPosition, evt);
+        //   $scope.fetch();
+        //} else if (evt.models[model].Position < newIndex && evt.models[model].id != evt.model["_id"]){
+          //var newPosition = evt.models[model].Position - 1;
+          //patchRequest(evt.models[model].id, newPosition);
+        }
+        // loop through each.. then patch each after changing
+
+        $http.patch('/workoutapi/'+ evt.model["_id"],{Position: newIndex})
+        .then(function(data, status){
+        console.log('updated  ' + evt.model.Name + ' position to ' + newIndex);
+        $scope.fetch();
+        });
+      } else {
+        console.log('yo index did not change.');
+      }
+    }
+  }
+
+  function patchRequest(id, newPosition, event) {
+    $http.patch('/workoutapi/'+ id,{Position: newPosition})
+    .then(function(data, status){
+    console.log('updated ' + event.model.Name+' position to ' + newPosition);
+    });
+  };
+
+

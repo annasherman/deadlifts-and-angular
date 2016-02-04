@@ -27,22 +27,22 @@
         <div class="workOutCards" >
           <ul ng-sortable="workoutConfig" id="workoutList">
             <li ng-repeat="lift in workout|orderBy:'Position'" class="workoutModule workout-module col l6" id="//lift._id//">
-            <div class="card">
-            <div class="card-content">
-            <a href="#" ng-click="removeLift(lift)" data-lift="//lift._id//"><i class="small material-icons">delete</i></a>
-              <span class="card-title">
-              <input placeholder="Position is //lift.Position//"></input>
-              <strong>//lift.Name//</strong></span>
-              <p><em>//lift.Description//</em></p>
+              <div class="card">
+                <div class="card-content">
+                  <a href="#" ng-click="removeLift(lift)" data-lift="//lift._id//"><i class="small material-icons">delete</i></a>
+                    <span class="card-title">
+                    <!-- <input placeholder="Position is //lift.Position//"></input> -->
+                    <strong>//lift.Name//</strong></span>
+                    <p><em>//lift.Description//</em></p>
 
-              <input class="editable" ng-blur="addSets(sets,lift)" data-lift="//lift._id//" placeholder="//lift.sets//" type="text" name="sets" ng-model="sets">
+                    <input class="editable" ng-blur="addSets(sets,lift)" data-lift="//lift._id//" placeholder="//lift.sets//" type="text" name="sets" ng-model="sets">
 
-              <input class="editable" ng-blur="addReps(reps,lift)" data-lift="//lift._id//" placeholder="//lift.reps//" type="text" name="reps" ng-model="reps">
+                    <input class="editable" ng-blur="addReps(reps,lift)" data-lift="//lift._id//" placeholder="//lift.reps//" type="text" name="reps" ng-model="reps">
 
-              <input class="editable" ng-blur="addWeight(weight,lift)" data-lift="//lift._id//" placeholder="//lift.weight//" type="text" name="weight" ng-model="weight">
+                    <input class="editable" ng-blur="addWeight(weight,lift)" data-lift="//lift._id//" placeholder="//lift.weight//" type="text" name="weight" ng-model="weight">
 
-            </div>
-            </div>
+                </div>
+              </div>
             </li>
           </ul>
         </div>
