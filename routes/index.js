@@ -33,35 +33,41 @@ router.get('/exercises', function(req,res,next){
   });
 });
 
+router.get('/usersworkouts', function(req,res,next){
+  if (req.user) {
+    workoutModel.find(function(error, exercises){
+      var userWorkouts = [];
+          for (var lift in exercises) {
+            if (exercises[lift].User == req.user) {
+              userWorkouts.push(exercises[lift]);
+            }
+          };
+      console.log(userWorkouts);
+      res.json(userWorkouts);
+    });
+  }
+});
+
 router.get('/workout', function(req, res, next) {
   workoutModel.find(function(error,exercises){
-    if (req.user && exercises.length ==0) {
-      console.log(exercises.length);
-      res.render('workout', {data: liftsChosen, currentUser: req.user, message: "You don't have any lifts yet! Check out our database and add them here."});
-    } else if (req.user && exercises.length > 0) {
-      console.log(exercises.length);
-      console.log(req.user);
+    if (req.user) {
       var userWorkouts = [];
-      //   for (var lift in exercises) {
-      //     if (exercises[lift].User == req.user) {
-      //       userWorkouts.push(exercises[lift]);
-      //     }
-      //   };
-      res.render('workout', {data: userWorkouts, currentUser: req.user});
+        for (var lift in exercises) {
+          if (exercises[lift].User == req.user) {
+            userWorkouts.push(exercises[lift]);
+          }
+        };
+      if (userWorkouts.length == 0)  {
+        res.render('workout', {
+          currentUser: req.user,
+          message:"You don't have any lifts yet! Check out our database and add them here." });
+      } else {
+        res.render('workout', {currentUser: req.user});
+      }
     } else {
       res.redirect('/');
     }
   });
-  console.log('-------user-------')
-  console.log(req.user);
-  //if (req.user && liftsChosen.length > 0){
-    //    res.render('workout', {data: liftsChosen, currentUser: req.user.username, currentUserId: req.user._id});
-  //} else if (req.user) {
-   // res.render('workout', {data: liftsChosen, currentUser: req.user, message: "You don't have any lifts yet! Check out our database and add them here."});
-  //} else {
-    //res.redirect('/');
-  //}
-
 });
 
 

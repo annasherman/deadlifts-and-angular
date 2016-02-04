@@ -118,8 +118,9 @@ workoutApp.controller('workoutCtrl', function($scope, $http){
 
 
     $scope.fetch = function(){
-      $http.get('/workoutapi').success(function(data) {
+      $http.get('/usersworkouts').success(function(data) {
         //console.log('We got it');
+        console.log(data);
         $scope.workout = data;
         $scope.modelCache = data;
         console.log($scope.modelCache);
