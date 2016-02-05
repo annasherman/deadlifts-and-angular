@@ -6,17 +6,7 @@
 {{/if}}
 </p>
 
-<!-- <section id="noAngular">
-    <li>item 1</li>
-    <li>item 2</li>
-    <li>item 3</li>
-</section>
 
-<section id="noAngular2">
-    <li>item 4</li>
-    <li>item 5</li>
-    <li>item 6</li>
-</section> -->
 
 
 
@@ -34,13 +24,18 @@
                     <!-- <input placeholder="Position is //lift.Position//"></input> -->
                     <strong>//lift.Name//</strong></span>
                     <p><em>//lift.Description//</em></p>
-
+                    <!-- <div class="input-field"> -->
+                    <label for="sets"> SETS:</label>
                     <input class="editable" ng-blur="addSets(sets,lift)" data-lift="//lift._id//" placeholder="//lift.sets//" type="text" name="sets" ng-model="sets">
-
+                    <!-- </div> -->
+                    <!-- <div class="input-field"> -->
+                    <label for="reps"> REPS:</label>
                     <input class="editable" ng-blur="addReps(reps,lift)" data-lift="//lift._id//" placeholder="//lift.reps//" type="text" name="reps" ng-model="reps">
-
+                    <!-- </div> -->
+                    <!-- <div class="input-field"> -->
+                    <label for="weight"> WEIGHT:</label>
                     <input class="editable" ng-blur="addWeight(weight,lift)" data-lift="//lift._id//" placeholder="//lift.weight//" type="text" name="weight" ng-model="weight">
-
+                    <!-- </div> -->
                 </div>
               </div>
             </li>

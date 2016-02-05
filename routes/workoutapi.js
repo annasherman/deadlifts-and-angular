@@ -18,13 +18,12 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
-
 //create exercise in a certain workout/routine
 router.post('/', function(req, res, next) {
   console.log(req.body);
   model.create(req.body, function(error, exercise){
     if (error) console.log(error);
-    console.log(req.params)
+    res.json(exercise);
   });
 });
 

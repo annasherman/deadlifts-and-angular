@@ -49,6 +49,12 @@ a {
   background-color: #CACACA;
 }
 
+#dragHere{
+  width: 100%;
+  min-height: 48px;
+  background-color: #C3FFD6;
+}
+
 .workout-module{
   margin-bottom: 2%;
 }
@@ -61,6 +67,22 @@ a {
   width: 100%;
 }
 
+.cardInWorkoutBuilder{
+  width: 100%;
+}
+
+.cardInWorkoutBuilder .card{
+  /*padding: -20px;*/
+  margin: -1px;
+}
+
+.cardInWorkoutBuilder .card .card-content {
+  padding: 0;
+}
+
+.cardInWorkoutBuilder .card .card-reveal{
+  padding: 1px;
+}
 
 .input-field{
   display: block;
@@ -113,6 +135,17 @@ input:not([type]), input[type=text], input[type=password], input[type=email], in
   height: 2rem;
 }
 
+.card input[type=text] {
+  width: 4em;
+}
+
+.nameWorkout input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea {
+  font-size: 1.4rem;
+}
+
+
 .card .card-content {
   padding: 10px;
 }
+
+

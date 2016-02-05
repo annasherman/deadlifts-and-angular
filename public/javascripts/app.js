@@ -3,11 +3,9 @@ $(document).ready(function() {
     $(".button-collapse").sideNav();
     console.log('linked');
 
-    var el = document.getElementById('noAngular');
-    var sortable = Sortable.create(el, {group: "group"});
-
-     var el = document.getElementById('noAngular2');
-    var sortable = Sortable.create(el, {group: "group", onStart: function(evt) {
-      console.log(evt.oldIndex);
-    }});
+    var lifts = document.getElementsByClassName('cardInWorkoutBuilder');
+    console.log(lifts[0].children);
+    // for (var lift in lifts) {
+    //   console.log(lifts.children;
+    // };
  });

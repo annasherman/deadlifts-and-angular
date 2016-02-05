@@ -10,8 +10,7 @@ var WorkoutComponentSchema = new mongoose.Schema({
   weight: String,
   Position: Number,
   User: Object,
-  WorkoutName: String,
-  WorkoutID: Number
+  workoutName: String
 });
 
 module.exports = mongoose.model('WorkoutComponent', WorkoutComponentSchema);

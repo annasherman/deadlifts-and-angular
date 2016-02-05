@@ -1,13 +1,46 @@
 
 
+Have a button that will only show up if a currentUser is logged in
+To append the "edit your workouts" fields.
+Otherwise, allow user to look at lifts.
+<br><br>
+
 
 <section class="container" ng-app="liftsApp">
+
+
+      <article ng-controller="BuilderCtrl">
+      {{#if currentUser}}
+      <input id="nameWorkout" ng-blur="saveWorkoutName(workoutName)" type="text" name="workoutName" ng-model="workoutName" placeholder="Workout A"></input>
+        Add lifts!
+        <ul ng-sortable="builderConfig" id="dragHere">
+          <li ng-repeat="item in data" class="cardInWorkoutBuilder">
+            <!-- LOOP THRU ALL THE SHIT FROM THE DOM -->
+            <input type="hidden" class="liftId" value="//item._id//"></input>
+            <input type="hidden" class="workoutName" value="//item.workoutName//"></input>
+            <div class="card">
+              <div class = "card-content">
+              <a href="#" ng-click="removeLift(item)"><i class="small material-icons">delete</i></a>
+              <span class="card-title activator grey-text text-darken-4"><strong>//item.Name//</strong><i class="material-icons right">more_vert</i></span>
+              </div>
+              <input type="hidden" value="{{currentUser}}" id="userInput">
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                  <p> <em>//item.Description//</em></p>
+              </div>
+              </div>
+          </li>
+        {{/if}}
+        </ul>
+      </article>
+
+
 
 
       <article class="row" ng-controller="LiftListCtrl">
         <div class="col l12">
 
-          <ul ng-sortable="{animation:150}">
+          <ul ng-sortable="liftsListSortable">
             <li ng-repeat="lift in lifts" class="col l6 m6 col s12">
               <div class ="card">
               <div class = "card-content">
@@ -20,10 +53,10 @@
               </div>
               </div>
 
-              <form ng-submit="addTo(lift.Name, lift.Description)">
+              <!-- <form ng-submit="addTo(lift.Name, lift.Description)">
                 <input type="hidden" value="{{currentUser}}" id="userInput">
                 <input type="submit" value="Add Lift" class="btn btn-primary">
-              </form>
+              </form> -->
 
               <!-- <button data-lift="//lift._id//" ng-click="addTo(lift)" className="addToButton">Add to Workout</button> -->
             </li>
