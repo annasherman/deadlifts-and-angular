@@ -29,8 +29,6 @@ liftsApp.controller('BuilderCtrl', function($scope,$http) {
       //else {
         //var workoutName = $('#nameWorkout').prop('placeholder');
       //};
-      console.log("-----------"+workoutName);
-      console.log(user);
       console.log('a lift got added');
       $.ajax({
         url: '/workoutapi',
@@ -54,12 +52,13 @@ liftsApp.controller('BuilderCtrl', function($scope,$http) {
     }
 
 
-    $scope.removeLift = function(lift){
+    $scope.removeLift = function(lift,event){
       console.log(lift.Name);
       console.log(lift._id);
         $http.delete('/workoutapi/' + lift._id).then(function(){
           console.log('your lift is gone from the API');
         });
+      //event.preventDefault();
       $scope.fetch();
     }
 
@@ -68,6 +67,9 @@ liftsApp.controller('BuilderCtrl', function($scope,$http) {
       console.log('Data Received');
       if (data.length != undefined) {
         $scope.data = data;
+        console.log($scope.data[0].workoutName);
+        var nameFromDb = $scope.data[0].workoutName;
+        $('#nameWorkout').val(nameFromDb);
       } else {
         data = [];
       //console.log($scope.lifts);
@@ -100,10 +102,10 @@ liftsApp.controller('LiftListCtrl', function($scope, $http){
     $http.get('/api').success(function(data) {
       console.log('Data Received');
       $scope.lifts = data;
-      //console.log($scope.lifts);
     });
   };
 
+///--------former ADD TO WORKOUT button----------///
   // $scope.addTo = function(name, description, event){
   //   var user = $('#userInput').val();
   //   console.log('------user------')
@@ -177,7 +179,9 @@ workoutApp.controller('workoutCtrl', function($scope, $http){
         $http.delete('/workoutapi/' + lift["_id"]).success(function(event){
           $scope.fetch();
 
+
         });
+      event.preventDefault();
     }
 
     $scope.addSets = function(sets,lift,event){

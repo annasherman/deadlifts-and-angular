@@ -1,18 +1,11 @@
 
 
-Have a button that will only show up if a currentUser is logged in
-To append the "edit your workouts" fields.
-Otherwise, allow user to look at lifts.
-<br><br>
-
-
 <section class="container" ng-app="liftsApp">
 
 
       <article ng-controller="BuilderCtrl">
       {{#if currentUser}}
       <input id="nameWorkout" ng-blur="saveWorkoutName(workoutName)" type="text" name="workoutName" ng-model="workoutName" placeholder="Workout A"></input>
-        Add lifts!
         <ul ng-sortable="builderConfig" id="dragHere">
           <li ng-repeat="item in data" class="cardInWorkoutBuilder">
             <!-- LOOP THRU ALL THE SHIT FROM THE DOM -->

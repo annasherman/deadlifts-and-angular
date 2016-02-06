@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
       <!-- JQUERY -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js"></script>
+    <!-- <script type="text/javascript" src="/javascripts/jquery.js"></script> -->
+
     <!-- <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
 
 
@@ -15,7 +17,7 @@
 
       <!-- Sortable.js -->
     <script src="https://rubaxa.github.io/Sortable/Sortable.js"></script>
-
+    <!--<script type="text/javascript" src="/javascripts/sortable.js"></script> -->
     <script type="text/javascript" src="/javascripts/ng-sortable.js"></script>
 
     <!-- ng-sortable.js -->
@@ -60,6 +62,9 @@
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <li><a href="/exercises">Lifts</a></li>
+        {{#unless currentUser}}
+        <li><a href="/accounts/login">Login</a></li>
+        {{/unless}}
         {{#if currentUser}}
         <li><a href="/workout">Your Workouts</a></li>
         <li><a href="/accounts/leave">Logout</a></li>
