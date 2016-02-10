@@ -4,6 +4,9 @@
 
 
       <article ng-controller="BuilderCtrl">
+      {{#unless currentUser}}
+      <a href="/">Log in or register</a> to build a workout!
+      {{/unless}}
       {{#if currentUser}}
       <input id="nameWorkout" ng-blur="saveWorkoutName(workoutName)" type="text" name="workoutName" ng-model="workoutName" placeholder="Workout A"></input>
         <ul ng-sortable="builderConfig" id="dragHere">
@@ -34,7 +37,7 @@
         <div class="col l12">
 
           <ul ng-sortable="liftsListSortable">
-            <li ng-repeat="lift in lifts" class="col l6 m6 col s12">
+            <li ng-repeat="lift in lifts" class="col l4 m6 col s12">
               <div class ="card">
               <div class = "card-content">
               <span class="card-title activator grey-text text-darken-4"><strong>//lift.Name//</strong><i class="material-icons right">more_vert</i></span>

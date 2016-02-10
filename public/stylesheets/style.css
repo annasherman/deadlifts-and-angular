@@ -127,7 +127,7 @@ li{
 
 p {
   font-family: 'Patua One', cursive;
-  font-size: 15px;
+  font-size: 14px;
   display: block;
 }
 
@@ -148,4 +148,7 @@ input:not([type]), input[type=text], input[type=password], input[type=email], in
   padding: 10px;
 }
 
+.card .card-title {
+  font-size: 22px;
+}
 
